@@ -1,0 +1,359 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TechnicalServiceModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Admins">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserName" Type="varchar" MaxLength="20" />
+    <Property Name="Password" Type="varchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="Categories">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CategoryName" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Currents">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FirstName" Type="varchar" MaxLength="30" />
+    <Property Name="LastName" Type="varchar" MaxLength="30" />
+    <Property Name="PhoneNumber" Type="varchar" MaxLength="20" />
+    <Property Name="MailAddress" Type="varchar" MaxLength="50" />
+    <Property Name="City" Type="varchar" MaxLength="13" />
+    <Property Name="District" Type="varchar" MaxLength="30" />
+    <Property Name="BankOfName" Type="varchar" MaxLength="50" />
+    <Property Name="TaxAdministration" Type="varchar" MaxLength="50" />
+    <Property Name="TaxNumber" Type="varchar" MaxLength="50" />
+    <Property Name="Status" Type="varchar" MaxLength="50" />
+    <Property Name="Address" Type="varchar" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="DefectDetails">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Process" Type="int" />
+    <Property Name="Problem" Type="varchar" MaxLength="150" />
+    <Property Name="Description" Type="varchar" MaxLength="150" />
+    <Property Name="OfferPrice" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Price" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Works" Type="varchar" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="Departments">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="50" />
+    <Property Name="Description" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Employees">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FirstName" Type="varchar" MaxLength="50" />
+    <Property Name="LastName" Type="varchar" MaxLength="50" />
+    <Property Name="DepartmentId" Type="tinyint" />
+    <Property Name="Photography" Type="varchar" MaxLength="100" />
+    <Property Name="MailAddress" Type="varchar" MaxLength="50" />
+    <Property Name="PhoneNumber" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="Expenses">
+    <Key>
+      <PropertyRef Name="ExpensId" />
+    </Key>
+    <Property Name="ExpensId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ExpensDescription" Type="varchar" MaxLength="50" />
+    <Property Name="Date" Type="smalldatetime" />
+    <Property Name="TotalPrice" Type="decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="InvoiceDetails">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ProductName" Type="varchar" MaxLength="50" />
+    <Property Name="ProductAmount" Type="smallint" />
+    <Property Name="UnitsInPrice" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="TotalPrice" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="InvoiceId" Type="int" />
+  </EntityType>
+  <EntityType Name="InvoiceInformations">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SerialName" Type="char" MaxLength="1" />
+    <Property Name="SerialNumber" Type="varchar" MaxLength="6" />
+    <Property Name="Date" Type="smalldatetime" />
+    <Property Name="Time" Type="char" MaxLength="5" />
+    <Property Name="TaxAdministration" Type="varchar" MaxLength="50" />
+    <Property Name="CurrentId" Type="int" />
+    <Property Name="EmployeeId" Type="smallint" />
+  </EntityType>
+  <EntityType Name="Notes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="varchar" MaxLength="50" />
+    <Property Name="Contents" Type="varchar" MaxLength="250" />
+    <Property Name="Status" Type="bit" />
+  </EntityType>
+  <EntityType Name="ProductAcceptances">
+    <Key>
+      <PropertyRef Name="ProcessId" />
+    </Key>
+    <Property Name="ProcessId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CurrentId" Type="int" />
+    <Property Name="EmployeeId" Type="smallint" />
+    <Property Name="ArrivalDate" Type="smalldatetime" />
+    <Property Name="ReleaseDate" Type="smalldatetime" />
+    <Property Name="ProductSerialNumber" Type="char" MaxLength="5" />
+  </EntityType>
+  <EntityType Name="ProductMovements">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ProductId" Type="tinyint" />
+    <Property Name="CurrentId" Type="int" />
+    <Property Name="EmployeeId" Type="smallint" />
+    <Property Name="Date" Type="smalldatetime" />
+    <Property Name="Amount" Type="smallint" />
+    <Property Name="Price" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="ProductSerialNumber" Type="char" MaxLength="5" />
+  </EntityType>
+  <EntityType Name="Products">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="50" />
+    <Property Name="Brand" Type="varchar" MaxLength="50" />
+    <Property Name="PurchasePrice" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="SalePrice" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="UnitsInStock" Type="smallint" />
+    <Property Name="CategoryId" Type="tinyint" />
+    <Property Name="State" Type="bit" />
+  </EntityType>
+  <EntityType Name="ProductTransactions">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ProductId" Type="tinyint" />
+    <Property Name="Statement" Type="varchar" MaxLength="150" />
+    <Property Name="Date" Type="int" />
+    <Property Name="TransactionCode" Type="char" MaxLength="5" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <Association Name="FK_Employees_Departments">
+    <End Role="Departments" Type="Self.Departments" Multiplicity="0..1" />
+    <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Departments">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Employees">
+        <PropertyRef Name="DepartmentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_InvoiceDetails_InvoiceInformations">
+    <End Role="InvoiceInformations" Type="Self.InvoiceInformations" Multiplicity="0..1" />
+    <End Role="InvoiceDetails" Type="Self.InvoiceDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="InvoiceInformations">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="InvoiceDetails">
+        <PropertyRef Name="InvoiceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_InvoiceInformations_Currents">
+    <End Role="Currents" Type="Self.Currents" Multiplicity="0..1" />
+    <End Role="InvoiceInformations" Type="Self.InvoiceInformations" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Currents">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="InvoiceInformations">
+        <PropertyRef Name="CurrentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_InvoiceInformations_Employees">
+    <End Role="Employees" Type="Self.Employees" Multiplicity="0..1" />
+    <End Role="InvoiceInformations" Type="Self.InvoiceInformations" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employees">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="InvoiceInformations">
+        <PropertyRef Name="EmployeeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProductAcceptances_Currents">
+    <End Role="Currents" Type="Self.Currents" Multiplicity="0..1" />
+    <End Role="ProductAcceptances" Type="Self.ProductAcceptances" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Currents">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProductAcceptances">
+        <PropertyRef Name="CurrentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProductAcceptances_Employees">
+    <End Role="Employees" Type="Self.Employees" Multiplicity="0..1" />
+    <End Role="ProductAcceptances" Type="Self.ProductAcceptances" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employees">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProductAcceptances">
+        <PropertyRef Name="EmployeeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProductMovements_Currents">
+    <End Role="Currents" Type="Self.Currents" Multiplicity="0..1" />
+    <End Role="ProductMovements" Type="Self.ProductMovements" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Currents">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProductMovements">
+        <PropertyRef Name="CurrentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProductMovements_Employees">
+    <End Role="Employees" Type="Self.Employees" Multiplicity="0..1" />
+    <End Role="ProductMovements" Type="Self.ProductMovements" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employees">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProductMovements">
+        <PropertyRef Name="EmployeeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProductMovements_Products1">
+    <End Role="Products" Type="Self.Products" Multiplicity="0..1" />
+    <End Role="ProductMovements" Type="Self.ProductMovements" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Products">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProductMovements">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Products_Categories">
+    <End Role="Categories" Type="Self.Categories" Multiplicity="0..1" />
+    <End Role="Products" Type="Self.Products" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Categories">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Products">
+        <PropertyRef Name="CategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProductTransactions_Products">
+    <End Role="Products" Type="Self.Products" Multiplicity="0..1" />
+    <End Role="ProductTransactions" Type="Self.ProductTransactions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Products">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProductTransactions">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="TechnicalServiceModelStoreContainer">
+    <EntitySet Name="Admins" EntityType="Self.Admins" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Categories" EntityType="Self.Categories" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Currents" EntityType="Self.Currents" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DefectDetails" EntityType="Self.DefectDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Departments" EntityType="Self.Departments" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Employees" EntityType="Self.Employees" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Expenses" EntityType="Self.Expenses" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="InvoiceDetails" EntityType="Self.InvoiceDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="InvoiceInformations" EntityType="Self.InvoiceInformations" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Notes" EntityType="Self.Notes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProductAcceptances" EntityType="Self.ProductAcceptances" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProductMovements" EntityType="Self.ProductMovements" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Products" EntityType="Self.Products" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProductTransactions" EntityType="Self.ProductTransactions" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Employees_Departments" Association="Self.FK_Employees_Departments">
+      <End Role="Departments" EntitySet="Departments" />
+      <End Role="Employees" EntitySet="Employees" />
+    </AssociationSet>
+    <AssociationSet Name="FK_InvoiceDetails_InvoiceInformations" Association="Self.FK_InvoiceDetails_InvoiceInformations">
+      <End Role="InvoiceInformations" EntitySet="InvoiceInformations" />
+      <End Role="InvoiceDetails" EntitySet="InvoiceDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_InvoiceInformations_Currents" Association="Self.FK_InvoiceInformations_Currents">
+      <End Role="Currents" EntitySet="Currents" />
+      <End Role="InvoiceInformations" EntitySet="InvoiceInformations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_InvoiceInformations_Employees" Association="Self.FK_InvoiceInformations_Employees">
+      <End Role="Employees" EntitySet="Employees" />
+      <End Role="InvoiceInformations" EntitySet="InvoiceInformations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProductAcceptances_Currents" Association="Self.FK_ProductAcceptances_Currents">
+      <End Role="Currents" EntitySet="Currents" />
+      <End Role="ProductAcceptances" EntitySet="ProductAcceptances" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProductAcceptances_Employees" Association="Self.FK_ProductAcceptances_Employees">
+      <End Role="Employees" EntitySet="Employees" />
+      <End Role="ProductAcceptances" EntitySet="ProductAcceptances" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProductMovements_Currents" Association="Self.FK_ProductMovements_Currents">
+      <End Role="Currents" EntitySet="Currents" />
+      <End Role="ProductMovements" EntitySet="ProductMovements" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProductMovements_Employees" Association="Self.FK_ProductMovements_Employees">
+      <End Role="Employees" EntitySet="Employees" />
+      <End Role="ProductMovements" EntitySet="ProductMovements" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProductMovements_Products1" Association="Self.FK_ProductMovements_Products1">
+      <End Role="Products" EntitySet="Products" />
+      <End Role="ProductMovements" EntitySet="ProductMovements" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Products_Categories" Association="Self.FK_Products_Categories">
+      <End Role="Categories" EntitySet="Categories" />
+      <End Role="Products" EntitySet="Products" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProductTransactions_Products" Association="Self.FK_ProductTransactions_Products">
+      <End Role="Products" EntitySet="Products" />
+      <End Role="ProductTransactions" EntitySet="ProductTransactions" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
